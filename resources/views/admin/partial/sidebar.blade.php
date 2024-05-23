@@ -47,6 +47,11 @@
                 <i class="mdi mdi-view-headline menu-icon"></i>
                 <span class="menu-title">User</span>
             </a>
+            <li class="nav-item" id="vendor">
+            <a class="nav-link" href="/admin/vendorlist">
+                <i class="mdi mdi-view-headline menu-icon"></i>
+                <span class="menu-title">Vendor</span>
+            </a>
         </li>
         <li class="nav-item" id="paymentMethod">
             <a class="nav-link" href="/admin/paymentMethod">

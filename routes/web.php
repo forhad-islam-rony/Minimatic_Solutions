@@ -164,6 +164,16 @@ Route::prefix('admin')->group(function () {
             Route::get('delete/{user}', 'destroy');
         });
     });
+    Route::prefix('vendorlist')->middleware('adminAuth')->group(function () {
+        Route::controller(App\Http\Controllers\UserController::class)->group(function () {
+            Route::get('/', 'index');
+            Route::get('/add', 'add');
+            Route::post('/', 'store');
+            Route::get('{user}', 'edit');
+            Route::patch('{user}', 'update');
+            Route::get('delete/{user}', 'destroy');
+        });
+    });
 
     Route::prefix('paymentMethod')->group(function () {
         Route::controller(App\Http\Controllers\PaymentMethodController::class)->group(function () {
