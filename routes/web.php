@@ -165,13 +165,13 @@ Route::prefix('admin')->group(function () {
         });
     });
     Route::prefix('vendorlist')->middleware('adminAuth')->group(function () {
-        Route::controller(App\Http\Controllers\UserController::class)->group(function () {
+        Route::controller(App\Http\Controllers\VendorController::class)->group(function () {
             Route::get('/', 'index');
             Route::get('/add', 'add');
-            Route::post('/', 'store');
-            Route::get('{user}', 'edit');
-            Route::patch('{user}', 'update');
-            Route::get('delete/{user}', 'destroy');
+            Route::post('/', 'store')->name('admin.vendors.store');
+            Route::get('{vendor}', 'edit');
+            Route::patch('{vendor}', 'update');
+            Route::delete('{vendor}', 'destroy');
         });
     });
 

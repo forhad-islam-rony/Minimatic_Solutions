@@ -95,8 +95,8 @@ class UserController extends Controller
             }
             return $this->check();
         } else {
-            Vendor::create($data);
-            return redirect('/vendor/')->with('alert-type', 'success')->with('message', 'Added Successfully');
+            User::create($data);
+            return redirect('/admin/user')->with('alert-type', 'success')->with('message', 'Added Successfully');
         }
     }
 

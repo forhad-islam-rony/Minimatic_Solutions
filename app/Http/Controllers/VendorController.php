@@ -14,6 +14,46 @@ use Session;
 
 class VendorController extends Controller
 {
+
+    public function index()
+    {
+        
+        $vendors = Vendor::get();
+        $columns = ['id', 'name', 'email', 'mobile'];
+        $tableName = 'vendor';
+
+        return view('admin.pages.vendorlist.index', compact('vendors', 'columns', 'tableName'));
+    }
+    
+    public function add()
+    {
+        $tableName = 'vendor';
+        return view('admin.pages.vendorlist.add', compact('tableName'));
+    }
+
+    public function store()
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'mobile' => 'required|numeric|digits:11',
+        ]);
+
+        $data['password'] = Hash::make(request('password'));
+
+        if (request('loginType')) {
+            User::create($data);
+            if (request()->session()->has('loginId')) {
+                return redirect('/admin/user')->with('alert-type', 'success')->with('message', 'Added Successfully');
+            }
+            return $this->check();
+        } else {
+            Vendor::create($data);
+            return redirect('/admin/vendorlist')->with('alert-type', 'success')->with('message', 'Added Successfully');
+        }
+    }
+
     public function edit()
     {
         $vendor= Vendor::find(Session::get('vendorId'));
@@ -115,5 +155,10 @@ class VendorController extends Controller
         return redirect('/')
                 ->with('alert-type','error')
                 ->with('message','Logout Successfully');
+    }
+    public function destroy(vendor $vendorlist)
+    {
+        $vendor->delete();
+        return redirect('/admin/vendorlist')->with('alert-type', 'error')->with('message', 'Deleted Successfully');
     }
 }
