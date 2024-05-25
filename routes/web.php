@@ -160,18 +160,18 @@ Route::prefix('admin')->group(function () {
             Route::get('/add', 'add');
             Route::post('/', 'store');
             Route::get('{user}', 'edit');
-            Route::patch('{user}', 'update');
+            Route::patch('{user}', 'updated');
             Route::get('delete/{user}', 'destroy');
         });
     });
-    Route::prefix('vendorlist')->middleware('adminAuth')->group(function () {
+    Route::prefix('vendor')->middleware('adminAuth')->group(function () {
         Route::controller(App\Http\Controllers\VendorController::class)->group(function () {
             Route::get('/', 'index');
             Route::get('/add', 'add');
             Route::post('/', 'store')->name('admin.vendors.store');
-            Route::get('{vendor}', 'edit');
-            Route::patch('{vendor}', 'update');
-            Route::delete('{vendor}', 'destroy');
+            Route::get('{vendor}', 'editt');
+            Route::patch('{vendor}', 'updated');
+            Route::get('delete/{vendor}', 'destroy');
         });
     });
 

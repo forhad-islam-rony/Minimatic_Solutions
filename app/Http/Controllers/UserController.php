@@ -130,6 +130,19 @@ class UserController extends Controller
 
         return redirect('/profile')->with('alert-type', 'success')->with('message', 'Updated Successfully');
     }
+    
+    public function updated(Request $request, User $users)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $users->id,
+            'mobile' => 'required|numeric|digits:11'
+        ]);
+
+        $users->update($data);
+
+        return redirect('/admin/user')->with('alert-type', 'success')->with('message', 'User updated successfully');
+    }
 
     protected function updateAddresses($addresses)
     {

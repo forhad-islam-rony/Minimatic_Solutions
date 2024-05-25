@@ -6,7 +6,7 @@
 <div class="col-12 grid-margin">
   <div class="card">
     <div class="card-body text-sm-left">
-      <a href="/admin/vendorlist/add" class="btn btn-primary">Add Vendor</a>
+      <a href="/admin/vendor/add" class="btn btn-primary">Add Vendor</a>
       </div>
     </div>
 </div>

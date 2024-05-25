@@ -48,7 +48,7 @@
                 <span class="menu-title">User</span>
             </a>
             <li class="nav-item" id="vendor">
-            <a class="nav-link" href="/admin/vendorlist">
+            <a class="nav-link" href="/admin/vendor">
                 <i class="mdi mdi-view-headline menu-icon"></i>
                 <span class="menu-title">Vendor</span>
             </a>

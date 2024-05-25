@@ -11,7 +11,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Add {{$tableName}}</h4>
-      <form action="/admin/vendorlist" class="form-sample" method="post">
+      <form action="/admin/vendor" class="form-sample" method="post">
           @csrf
           <div class="row">
             <div class="col-md-12 mt-4">

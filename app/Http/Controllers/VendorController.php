@@ -22,13 +22,13 @@ class VendorController extends Controller
         $columns = ['id', 'name', 'email', 'mobile'];
         $tableName = 'vendor';
 
-        return view('admin.pages.vendorlist.index', compact('vendors', 'columns', 'tableName'));
+        return view('admin.pages.vendor.index', compact('vendors', 'columns', 'tableName'));
     }
     
     public function add()
     {
         $tableName = 'vendor';
-        return view('admin.pages.vendorlist.add', compact('tableName'));
+        return view('admin.pages.vendor.add', compact('tableName'));
     }
 
     public function store()
@@ -50,7 +50,7 @@ class VendorController extends Controller
             return $this->check();
         } else {
             Vendor::create($data);
-            return redirect('/admin/vendorlist')->with('alert-type', 'success')->with('message', 'Added Successfully');
+            return redirect('/admin/vendor')->with('alert-type', 'success')->with('message', 'Added Successfully');
         }
     }
 
@@ -58,6 +58,11 @@ class VendorController extends Controller
     {
         $vendor= Vendor::find(Session::get('vendorId'));
         return view('vendor.pages.dashboard.edit',compact('vendor'));
+    }
+    
+    public function editt(Vendor $vendor)
+    {
+        return view('admin.pages.vendor.edit', compact('vendor'));
     }
 
     public function rate()
@@ -101,6 +106,19 @@ class VendorController extends Controller
         return redirect('/vendor/dashboard')
                 ->with('alert-type','success')
                 ->with('message','Details Updated Successfully');
+    }
+
+    public function updated(Request $request, Vendor $vendor)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:vendor,email,' . $vendor->id,
+            'mobile' => 'required|numeric|digits:11'
+        ]);
+
+        $vendor->update($data);
+
+        return redirect('/admin/vendor')->with('alert-type', 'success')->with('message', 'Vendor updated successfully');
     }
 
     public function view(){
@@ -156,9 +174,9 @@ class VendorController extends Controller
                 ->with('alert-type','error')
                 ->with('message','Logout Successfully');
     }
-    public function destroy(vendor $vendorlist)
+    public function destroy(Vendor $vendor)
     {
         $vendor->delete();
-        return redirect('/admin/vendorlist')->with('alert-type', 'error')->with('message', 'Deleted Successfully');
+        return redirect('/admin/vendor')->with('alert-type', 'error')->with('message', 'Deleted Successfully');
     }
 }
