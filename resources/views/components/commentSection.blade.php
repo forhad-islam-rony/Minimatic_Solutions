@@ -12,6 +12,7 @@
                                     <label for="comment">Your Comment</label>
                                     <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
                                 </div>
+                                 
                                 <input type="submit" id="commentSubmit" name="submitType" class="btn btn-default"
                                     value="Send">
                             </form>

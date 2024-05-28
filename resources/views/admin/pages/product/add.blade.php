@@ -17,7 +17,7 @@
                 @foreach($brands as $brand)
                     <option value="{{$brand->id}}">{{$brand->name}}</option>
                 @endforeach
-                </select>
+                </select>           
             </div>
             <label class="col-sm-3 col-form-label">Select Category</label>
             <div class="col-sm-3">

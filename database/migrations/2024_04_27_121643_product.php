@@ -19,12 +19,14 @@ return new class extends Migration
             $table->foreignId('brand_id');
             $table->foreignId('discount_id');
             $table->foreignId('vendor_id');
-            $table->string('name');
-            $table->text('details');
             $table->json('attributes');
             $table->integer('price');
             $table->integer('quantity');
             $table->string('image');
+            $table->string('name');
+            $table->text('details');  
+    
+              
             $table->integer('sold_quantity')->default(0);
             $table->timestamps();
 

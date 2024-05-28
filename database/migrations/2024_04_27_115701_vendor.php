@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('mobile');
             $table->string('password');
             $table->string('image')->nullable();
+             
             $table->string('shop_name')->nullable();
             $table->string('shop_address')->nullable();
             $table->timestamps();
