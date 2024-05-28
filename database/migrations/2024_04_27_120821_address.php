@@ -18,12 +18,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->Integer('address_number');
             $table->text('address');
-            // $table->string('address_line_1');
-            // $table->string('address_line_2');
-            // $table->string('city');
-            // $table->string('state');
-            // $table->string('country');
-            // $table->Integer('pincode');
 
             $table->foreign('user_id')->references('id')->on('users');
         });

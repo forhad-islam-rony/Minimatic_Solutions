@@ -46,7 +46,7 @@ class UserNotification extends Notification
         return (new MailMessage)
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
-                    ->line('Welcome To the JIT Family!');
+                    ->line('Welcome To the Minimatic Family!');
     }
 
     public function toDatabase($notifiable)

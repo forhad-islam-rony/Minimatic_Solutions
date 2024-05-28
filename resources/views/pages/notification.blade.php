@@ -7,7 +7,7 @@
                 <ul class="event-list">
                     @foreach ($notifications as $notification)
                         <li>
-                            <time datetime="2014-10-20">
+                            <time datetime="2024-04-20">
                                 @if (array_key_exists('date', $notification['data']))
                                     <span
                                         class="day">{{ date_create_from_format('Y-m-d', $notification['data']['date'])->format('d') }}</span>
